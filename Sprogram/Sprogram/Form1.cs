@@ -56,6 +56,7 @@ namespace Sprogram
                 double maxY = Convert.ToDouble(textBox4.Text);
                 double step = Convert.ToDouble(textBox5.Text);
                 beamStressCalculator.SetParameters(inter, moment, maxY, minY, step);
+
                 label7.Text = "Параметры рассчитаны";
             }
             catch (Exception ex)
@@ -82,6 +83,19 @@ namespace Sprogram
 
                 chart1.Series.Clear();
                 chart1.ChartAreas.Clear();
+
+                // Очищаем ListBox перед заполнением
+                listBox1.Items.Clear();
+
+                // Добавляем заголовок таблицы
+                listBox1.Items.Add("y (мм)\t\t\tσ (Н/мм²)");
+                listBox1.Items.Add("------------------------------------------------");
+
+                // Заполняем ListBox данными
+                foreach (var point in stressTable)
+                {
+                    listBox1.Items.Add($"{point.y:F2}\t\t\t{point.stress:F4}");
+                }
 
                 // Создаем и настраиваем область графика
                 ChartArea chartArea = new ChartArea("MainArea")
@@ -117,7 +131,7 @@ namespace Sprogram
 
                 label7.Text = "График успешно построен";
                 DrawBeamWithStressDiagram();
-                
+
             }
             catch (Exception ex)
             {
@@ -250,7 +264,7 @@ namespace Sprogram
                  */
                 // Добавляем серии
                 chart2.Series.Add(stressSeries);
-                
+
 
                 // Настраиваем внешний вид
                 chartArea.AxisY.Minimum = stressData.Min(p => p.stress) * 1.1;
@@ -285,6 +299,115 @@ namespace Sprogram
             }
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(textBox6.Text))
+                {
+                    MessageBox.Show("Сначала укажите папку для сохранения!", "Ошибка",
+                                  MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Создаем полный путь к файлу
+                string fileName = "beam_stress_analysis.xlsx";
+                string fullPath = Path.Combine(textBox6.Text, fileName);
+
+                // Проверяем и создаем директорию, если нужно
+                Directory.CreateDirectory(Path.GetDirectoryName(fullPath));
+
+                var mediator = new OfficeMediator(
+                    beamStressCalculator.GetStressTable(),
+                    beamStressCalculator.Moment,
+                    beamStressCalculator.InertiaMoment,
+                    beamStressCalculator.MinY,
+                    beamStressCalculator.MaxY);
+
+                mediator.ExcelSave(fullPath);
+                MessageBox.Show($"Файл успешно сохранен:\n{fullPath}", "Успех",
+                              MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка экспорта в Excel:\n{ex.Message}", "Ошибка",
+                              MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(textBox6.Text))
+                {
+                    MessageBox.Show("Сначала укажите папку для сохранения!", "Ошибка",
+                                  MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Создаем полный путь к файлу
+                string fileName = "beam_analysis_report.docx";
+                string fullPath = Path.Combine(textBox6.Text, fileName);
+
+                // Проверяем и создаем директорию, если нужно
+                Directory.CreateDirectory(Path.GetDirectoryName(fullPath));
+
+                // Получаем изображение графика
+                var chartImage = GetChartImage(chart2);
+
+                var mediator = new OfficeMediator(
+                    beamStressCalculator.GetStressTable(),
+                    beamStressCalculator.Moment,
+                    beamStressCalculator.InertiaMoment,
+                    beamStressCalculator.MinY,
+                    beamStressCalculator.MaxY);
+
+                mediator.WordSave(fullPath, chartImage);
+                MessageBox.Show($"Файл успешно сохранен:\n{fullPath}", "Успех",
+                              MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка экспорта в Word:\n{ex.Message}", "Ошибка",
+                              MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private Image GetChartImage(Chart chart)
+        {
+            using (var ms = new MemoryStream())
+            {
+                chart.SaveImage(ms, ChartImageFormat.Png);
+                return Image.FromStream(ms);
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            // Настраиваем диалог выбора папки
+            folderBrowserDialog1.Description = "Выберите папку для сохранения результатов";
+            folderBrowserDialog1.ShowNewFolderButton = true; // Разрешаем создавать новые папки
+            folderBrowserDialog1.RootFolder = Environment.SpecialFolder.MyDocuments; // Начальная папка
+
+            // Показываем диалог и проверяем результат
+            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+            {
+                // Получаем выбранный путь и записываем в TextBox
+                textBox6.Text = folderBrowserDialog1.SelectedPath;
+
+                // Опционально: добавляем слеш в конце, если его нет
+                if (!textBox6.Text.EndsWith("\\"))
+                {
+                    textBox6.Text += "\\";
+                }
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

@@ -35,9 +35,11 @@ namespace Sprogram
             _minY = minY;
             _maxY = maxY;
             _step = step;
-        }
+            CreateStressTRable();
 
-        public List<(double y, double stress)> GetStressTable()
+        }
+        
+        private void CreateStressTRable()
         {
             var stressTable = new List<(double y, double stress)>();
 
@@ -51,7 +53,7 @@ namespace Sprogram
             for (double y = _minY + _step; y < _maxY; y += _step)
             {
                 stressTable.Add((y, CalculateStress(y)));
-                _stressTable.Add((y, CalculateStress(y)));    
+                _stressTable.Add((y, CalculateStress(y)));
             }
 
             // Добавляем конечную точку (если не совпадает с последней)
@@ -63,8 +65,11 @@ namespace Sprogram
 
             if (stressTable.Count == 0)
                 throw new InvalidOperationException("Не удалось создать таблицу напряжений. Проверьте параметры.");
+        }
 
-            return stressTable;
+        public List<(double y, double stress)> GetStressTable()
+        {
+            return _stressTable;
         }
 
         public List<(double y, double stress)> GetTable()
