@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "xT1UOKgOGd0=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\USER\\Documents\\Бнту\\Курсовые работы\\РПВС\\Sprogram\\Sprogram\\Sprogram.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\USER\\.nuget\\packages\\winforms.datavisualization\\1.10.0\\winforms.datavisualization.1.10.0.nupkg.sha512"
+  ],
+  "logs": []
+}
