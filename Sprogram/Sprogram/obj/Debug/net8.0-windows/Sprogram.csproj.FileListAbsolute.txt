@@ -83,3 +83,4 @@ C:\Users\Mikita_user\Documents\БНТУ\Курсовые работы\RPVS_cours
 C:\Users\Mikita_user\Documents\БНТУ\Курсовые работы\RPVS_coursework\Sprogram\Sprogram\obj\Debug\net8.0-windows\Sprogram.pdb
 C:\Users\Mikita_user\Documents\БНТУ\Курсовые работы\RPVS_coursework\Sprogram\Sprogram\obj\Debug\net8.0-windows\Sprogram.genruntimeconfig.cache
 C:\Users\Mikita_user\Documents\БНТУ\Курсовые работы\RPVS_coursework\Sprogram\Sprogram\obj\Debug\net8.0-windows\ref\Sprogram.dll
+C:\Users\USER\Documents\Бнту\Курсовые работы\РПВС\Sprogram\Sprogram\obj\Debug\net8.0-windows\Sprogram.sourcelink.json
