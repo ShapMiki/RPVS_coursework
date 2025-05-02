@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Reflection;
 using System.Windows.Forms.DataVisualization.Charting;
 
@@ -406,7 +407,33 @@ namespace Sprogram
 
         private void button6_Click(object sender, EventArgs e)
         {
+            try
+            {
+               
+                string helpFilePath = "Untitled.chm";
 
+                // Проверяем существование файла
+                if (!File.Exists(helpFilePath))
+                {
+                    // Если файл не найден в текущей директории, попробуем найти в директории приложения
+                    helpFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Untitled.chm");
+
+                    if (!File.Exists(helpFilePath))
+                    {
+                        MessageBox.Show("Файл справки 'Untitled.chm' не найден!", "Ошибка",
+                                      MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+
+                // Открываем CHM-файл с помощью стандартного средства Windows
+                Process.Start(new ProcessStartInfo(helpFilePath) { UseShellExecute = true });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Не удалось открыть файл справки: {ex.Message}", "Ошибка",
+                              MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
