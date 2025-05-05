@@ -30,12 +30,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -44,7 +40,7 @@
               "RelativeDocumentMoniker": "Sprogram\\officemediator.cs",
               "ToolTip": "C:\\Users\\Mikita_user\\Documents\\\u0411\u041D\u0422\u0423\\\u041A\u0443\u0440\u0441\u043E\u0432\u044B\u0435 \u0440\u0430\u0431\u043E\u0442\u044B\\RPVS_coursework\\Sprogram\\Sprogram\\officemediator.cs",
               "RelativeToolTip": "Sprogram\\officemediator.cs",
-              "ViewState": "AgIAAH8AAAAAAAAAAAAkwJMAAAA7AAAAAAAAAA==",
+              "ViewState": "AgIAAH8AAAAAAAAAAAAkwIEAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-25T11:02:42.039Z",
               "EditorCaption": ""
@@ -59,8 +55,7 @@
               "RelativeToolTip": "Sprogram\\Form1.Designer.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-22T22:17:39.075Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-22T22:17:39.075Z"
             },
             {
               "$type": "Document",
@@ -71,8 +66,7 @@
               "ToolTip": "C:\\Users\\Mikita_user\\Documents\\\u0411\u041D\u0422\u0423\\\u041A\u0443\u0440\u0441\u043E\u0432\u044B\u0435 \u0440\u0430\u0431\u043E\u0442\u044B\\RPVS_coursework\\Sprogram\\Sprogram\\Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "RelativeToolTip": "Sprogram\\Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-21T14:51:19.416Z",
-              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
+              "WhenOpened": "2025-04-21T14:51:19.416Z"
             },
             {
               "$type": "Document",
@@ -84,8 +78,7 @@
               "RelativeToolTip": "Sprogram\\Form1.cs",
               "ViewState": "AgIAAJIBAAAAAAAAAAAuwLgBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-22T20:43:58.773Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-22T20:43:58.773Z"
             },
             {
               "$type": "Document",
@@ -97,8 +90,7 @@
               "RelativeToolTip": "Sprogram\\mathmenager.cs",
               "ViewState": "AgIAADMAAAAAAAAAAAAcwFcAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-22T20:13:18.486Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-22T20:13:18.486Z"
             }
           ]
         }
